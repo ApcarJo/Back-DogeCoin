@@ -18,9 +18,10 @@ router.post("/", authUser, async(req, res) => {
 
 // GET - Return all transactions history in the database.
 
-router.get("/", authUser, async(req, res) => {
+router.post("/all", authUser, async(req, res) => {
     try {
-        res.json(await transactionController.findAllTransactions());
+        const data = req.body;
+        res.json(await transactionController.findAllTransactions(data));
     } catch (error) {
         return res.status(500).json({
             message: error.message
