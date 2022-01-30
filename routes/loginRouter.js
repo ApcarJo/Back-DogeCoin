@@ -7,7 +7,6 @@ const userController = require('../controllers/userController.js');
 
 router.post('/', async (req, res) => {
     try {
-        console.log('hola');
         const mailCheck = req.body.email;
         const passwordCheck = req.body.password;
         let token = await loginController.validateUser(mailCheck, passwordCheck);
