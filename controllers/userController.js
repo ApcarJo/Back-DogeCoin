@@ -14,9 +14,10 @@ class Trader {
     }
 
     async createTransaction(data) {
-        return await User.findByIdAndUpdate(
+        let tr = await User.findByIdAndUpdate(
             { _id: data.user_id },
             { $push: { transactions: data } });
+            return tr;
     }
 
     async findById(id) {

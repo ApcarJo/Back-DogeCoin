@@ -9,10 +9,11 @@ const authUser = require("../middleware/authUser.js");
 router.post("/", authUser, async (req, res) => {
     try {
         const data = req.body;
+        let transaction = '';
         // To avoid request 10000 transactions, 
         // user transactions are created also in an array at the same model
-        let transaction = await transactionController.createTransaction(data);
-        let userTransaction;
+        transaction = await transactionController.createTransaction(data);
+        let userTransaction = '';
         if (transaction) {
             userTransaction = await userController.createTransaction(transaction);
         }
