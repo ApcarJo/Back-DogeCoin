@@ -17,7 +17,7 @@ router.post("/",  async(req, res) => {
     }
 });
 
-// GET - Return all Users in the database.
+// GET - Return all Users in the database. This wolud have been only for admin role
 
 router.get("/", async(req, res) => {
     try {
