@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const transactionSchema = new Schema ({
+const transactionSchema = new Schema({
 
     address: {
         type: String,
@@ -12,10 +12,11 @@ const transactionSchema = new Schema ({
     quantity: {
         type: Number,
         required: true
-
     },
 
-    user_id:{
+    date: { type: Date, default: Date.now },
+
+    user_id: {
         type: String,
         required: true
     },
