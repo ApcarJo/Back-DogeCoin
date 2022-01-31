@@ -27,7 +27,7 @@ class Trader {
 
     async findSent(id){
         return User.find(
-            {_id: id}
+            {_id: id, isSent: true}
         )
     }
 
@@ -36,6 +36,7 @@ class Trader {
             {email: email}
         )
     }
+    
 
     async findAllUsers() {
         return User.find();

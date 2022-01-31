@@ -44,10 +44,10 @@ router.post("/user", authUser, async(req, res) => {
 
 // POST - Find all transactions received
 
-router.post("/user", authUser, async(req, res) => {
+router.post("/user/received", authUser, async(req, res) => {
     try {
-        const body = req.body;
-        res.json(await userController.findReceived(body));
+        const id = req.body.user_id;
+        res.json(await userController.findReceived(id));
     } catch (error) {
         return res.status(500).json({
             message: error.message
@@ -57,10 +57,10 @@ router.post("/user", authUser, async(req, res) => {
 
 // POST - Find all transactions sent
 
-router.post("/user", authUser, async(req, res) => {
+router.post("/user/sent", authUser, async(req, res) => {
     try {
-        const body = req.body.user;
-        res.json(await userController.findSent(body));
+        const id = req.body.user_id;
+        res.json(await userController.findSent(id));
     } catch (error) {
         return res.status(500).json({
             message: error.message
