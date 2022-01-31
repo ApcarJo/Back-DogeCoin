@@ -31,7 +31,7 @@ router.get("/", async(req, res) => {
 
 // POST - Find user by id
 
-router.post("/user", authUser, async(req, res) => {
+router.post("/getUser", authUser, async(req, res) => {
     try {
         const id = req.body.user_id;
         res.json(await userController.findById(id));
@@ -44,7 +44,7 @@ router.post("/user", authUser, async(req, res) => {
 
 // POST - Find all transactions received
 
-router.post("/user/received", authUser, async(req, res) => {
+router.post("/received", authUser, async(req, res) => {
     try {
         const id = req.body.user_id;
         res.json(await userController.findReceived(id));
@@ -57,7 +57,7 @@ router.post("/user/received", authUser, async(req, res) => {
 
 // POST - Find all transactions sent
 
-router.post("/user/sent", authUser, async(req, res) => {
+router.post("/sent", authUser, async(req, res) => {
     try {
         const id = req.body.user_id;
         res.json(await userController.findSent(id));
