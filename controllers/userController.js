@@ -21,7 +21,7 @@ class Trader {
 
     async findReceived(id){
         return User.findOne(
-            {_id: id}
+            {_id: id, isSent: false}
         )
     }
 
