@@ -16,7 +16,7 @@ const transactionSchema = new Schema({
 
     date: { 
         type: Date, 
-        default: Date.now 
+        required: true 
     },
 
     user_id: {
