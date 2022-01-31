@@ -12,8 +12,11 @@ router.post("/", authUser, async (req, res) => {
         // To avoid request 10000 transactions, 
         // user transactions are created also in an array at the same model
         let transaction = await transactionController.createTransaction(data);
-        let userTransaction = await userController.createTransaction(data);
-        res.json({ transaction, userTransaction });
+        let userTransaction;
+        if (transaction) {
+            userTransaction = await userController.createTransaction(transaction);
+        }
+        await res.json({ transaction, userTransaction });
     } catch (error) {
         return res.status(500).json({
             message: error.message

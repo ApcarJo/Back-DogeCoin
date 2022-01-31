@@ -9,81 +9,81 @@ class Trader {
     }
 
     async createUser(user) {
-        user.password = await bcrypt.hash( user.password, 10 );
+        user.password = await bcrypt.hash(user.password, 10);
         return User.create(user);
     }
 
     async createTransaction(data) {
-    return User.findByIdAndUpdate( 
-        { _id: data.user_id },
-        {$push: { transactions: data }});
+        return await User.findByIdAndUpdate(
+            { _id: data.user_id },
+            { $push: { transactions: data } });
     }
 
-    async findById(id){
+    async findById(id) {
         return User.findOne(
-            {_id: id}
+            { _id: id }
         )
     }
 
-    async findReceived(id){
+    async findReceived(id) {
         return User.findOne(
-            {_id: id, isSent: false}
+            { _id: id, isSent: false }
         )
     }
 
-    async findSent(id){
+    async findSent(id) {
         return User.find(
-            {_id: id, isSent: true}
+            { _id: id, isSent: true }
         )
     }
 
-    async findByEmail(email){
+    async findByEmail(email) {
         return User.findOne(
-            {email: email}
+            { email: email }
         )
     }
-    
+
 
     async findAllUsers() {
         return User.find();
     }
 
-//     async modifyAppointment(data) {
+    //     async modifyAppointment(data) {
 
-//         const clinicId = data.clinic;
+    //         const clinicId = data.clinic;
 
-//         const clinicInfo = await Clinic.findById(clinicId);
+    //         const clinicInfo = await Clinic.findById(clinicId);
 
-//         let clinic1 = {
-//             idClinica: clinicId,
-//             name : clinicInfo.name,
-//             phone : clinicInfo.phone,
-//             email : clinicInfo.email,
-//             city : clinicInfo.city,
-//         }
+    //         let clinic1 = {
+    //             idClinica: clinicId,
+    //             name : clinicInfo.name,
+    //             phone : clinicInfo.phone,
+    //             email : clinicInfo.email,
+    //             city : clinicInfo.city,
+    //         }
 
-//         return Appointment.findByIdAndUpdate( { _id: data.id },
-//             {
-//                 clinic: clinic1,
-//                 date: data.date,
-//                 isActive: data.isActive
+    //         return Appointment.findByIdAndUpdate( { _id: data.id },
+    //             {
+    //                 clinic: clinic1,
+    //                 date: data.date,
+    //                 isActive: data.isActive
 
-//             }, {new:true,omitUndefined:true}
-//         )
-//     }
+    //             }, {new:true,omitUndefined:true}
+    //         )
+    //     }
 
-//     async removeAppointment(data) {
+    //     async removeAppointment(data) {
 
-//         const clinicId = data.clinic;
-//         const appointmentId = data.id;
+    //         const clinicId = data.clinic;
+    //         const appointmentId = data.id;
 
-//         const deleteAppointment = await Appointment.findByIdAndRemove( { _id: appointmentId } );
+    //         const deleteAppointment = await Appointment.findByIdAndRemove( { _id: appointmentId } );
 
-//         const clinicApp = await Clinic.findByIdAndUpdate({_id: clinicId},
-//         { $pull : {appointmentArray: appointmentId} });
+    //         const clinicApp = await Clinic.findByIdAndUpdate({_id: clinicId},
+    //         { $pull : {appointmentArray: appointmentId} });
 
-//         return deleteAppointment;
-//  }
+    //         return deleteAppointment;
+    //  }
 }
 
 let transactionsController = new Trader();
