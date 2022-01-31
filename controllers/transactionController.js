@@ -1,6 +1,7 @@
 
 const bcrypt = require("bcrypt");
 const Transaction = require("../models/transaction.js");
+const User = require("../models/user.js");
 
 class Exchange {
     constructor() {

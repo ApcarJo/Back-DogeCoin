@@ -13,6 +13,12 @@ class Trader {
         return User.create(user);
     }
 
+    async createTransaction(data) {
+    return User.findByIdAndUpdate( 
+        { _id: data.user_id },
+        {$push: { transactions: data }});
+    }
+
     async findReceived(id){
         return User.findOne(
             {_id: id}
