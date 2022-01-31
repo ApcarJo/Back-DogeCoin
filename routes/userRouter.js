@@ -33,7 +33,7 @@ router.get("/", async(req, res) => {
 
 router.post("/user", authUser, async(req, res) => {
     try {
-        const id = req.body.id;
+        const id = req.body.user_id;
         res.json(await userController.findById(id));
     } catch (error) {
         return res.status(500).json({

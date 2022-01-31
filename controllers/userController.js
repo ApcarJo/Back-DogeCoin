@@ -19,6 +19,12 @@ class Trader {
         {$push: { transactions: data }});
     }
 
+    async findById(id){
+        return User.findOne(
+            {_id: id}
+        )
+    }
+
     async findReceived(id){
         return User.findOne(
             {_id: id, isSent: false}
