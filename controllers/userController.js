@@ -48,43 +48,6 @@ class Trader {
     async findAllUsers() {
         return User.find();
     }
-
-    //     async modifyAppointment(data) {
-
-    //         const clinicId = data.clinic;
-
-    //         const clinicInfo = await Clinic.findById(clinicId);
-
-    //         let clinic1 = {
-    //             idClinica: clinicId,
-    //             name : clinicInfo.name,
-    //             phone : clinicInfo.phone,
-    //             email : clinicInfo.email,
-    //             city : clinicInfo.city,
-    //         }
-
-    //         return Appointment.findByIdAndUpdate( { _id: data.id },
-    //             {
-    //                 clinic: clinic1,
-    //                 date: data.date,
-    //                 isActive: data.isActive
-
-    //             }, {new:true,omitUndefined:true}
-    //         )
-    //     }
-
-    //     async removeAppointment(data) {
-
-    //         const clinicId = data.clinic;
-    //         const appointmentId = data.id;
-
-    //         const deleteAppointment = await Appointment.findByIdAndRemove( { _id: appointmentId } );
-
-    //         const clinicApp = await Clinic.findByIdAndUpdate({_id: clinicId},
-    //         { $pull : {appointmentArray: appointmentId} });
-
-    //         return deleteAppointment;
-    //  }
 }
 
 let transactionsController = new Trader();
